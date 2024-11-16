@@ -107,32 +107,32 @@ const ContactTable = ({ allContacts, refreshContacts }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {currentContacts.length > 0 ? (
-              currentContacts.map((contact) => (
-                <TableRow key={contact._id}>
-                  <TableCell>{contact.firstName}</TableCell>
-                  <TableCell>{contact.lastName}</TableCell>
-                  <TableCell>{contact.email}</TableCell>
-                  <TableCell>{contact.phoneNo}</TableCell>
-                  <TableCell>{contact.company}</TableCell>
-                  <TableCell>{contact.jobTitle}</TableCell>
-                  <TableCell>
-                    <div className="flex flex-row gap-3">
-                      <button
-                        className="bg-blue-500 text-white p-2 rounded-md"
-                        onClick={() => handleEditFormOpen(contact)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="bg-red-500 text-white p-2 rounded-md"
-                        onClick={() => handleOpen(contact)}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </TableCell>
-                </TableRow>
+            {currentContacts?.length > 0 ? (
+              currentContacts.sort((a, b) => a.firstName.localeCompare(b.firstName)).map((contact) => (
+                  <TableRow key={contact._id}>
+                    <TableCell>{contact.firstName}</TableCell>
+                    <TableCell>{contact.lastName}</TableCell>
+                    <TableCell>{contact.email}</TableCell>
+                    <TableCell>{contact.phoneNo}</TableCell>
+                    <TableCell>{contact.company}</TableCell>
+                    <TableCell>{contact.jobTitle}</TableCell>
+                    <TableCell>
+                      <div className="flex flex-row gap-3">
+                        <button
+                          className="bg-blue-500 text-white p-2 rounded-md"
+                          onClick={() => handleEditFormOpen(contact)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="bg-red-500 text-white p-2 rounded-md"
+                          onClick={() => handleOpen(contact)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
               ))
             ) : (
               <TableRow>
